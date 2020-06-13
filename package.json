@@ -1,0 +1,18 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@prefresh/vite": "^0.9.1",
+        "eslint": "^7.2.0",
+        "eslint-config-byungi": "^0.12.2",
+        "sass": "^1.26.8",
+        "vite": "^0.20.8"
+    },
+    "dependencies": {
+        "preact": "^10.4.4",
+        "thejungle": "^1.0.4"
+    }
+}

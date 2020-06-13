@@ -1,0 +1,11 @@
+{
+    "extends": "byungi/react",
+    "settings": {
+        "react": {
+            "pragma": "h"
+        }
+    },
+    "rules": {
+        "react/react-in-jsx-scope": "off"
+    }
+}
