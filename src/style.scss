@@ -1,5 +1,150 @@
-@import 'thejungle/reset.scss';
+@use 'thejungle/reset';
+@use 'thejungle/thejungle' as tj;
+@use 'thejungle/easings' as ease;
 
-body {
-    background: red;
+@font-face {
+    font-family: 'fromdamiM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_ten@1.0/fromdamiM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
+$color-bg: #f3eada;
+
+:root {
+    background: $color-bg;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.app{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.s1{
+    $foot-h: 340px;
+
+    position: relative;
+    background: url('./assets/photo1.jpg') 60%;
+    background-size: cover;
+    height: calc(100vh - #{$foot-h});
+
+    &__foot{
+        position: absolute;
+        width: 100%; max-width: 500px;
+        left:0; top: 100%;
+        height: $foot-h;
+
+        &::before{
+            $wave-h: percentage(86/800);
+
+            content: '';
+            display: block;
+            background: url('./assets/wave.svg') center no-repeat;
+            padding-top: $wave-h;
+            margin: 0 auto;
+            margin-top: calc(#{-$wave-h} + 1px);
+        }
+    }
+
+    &__names, &__title{
+        color: #34412e;
+        font-family: fromdamiM, sans-serif;
+    }
+    &__names{
+        position: absolute;
+        left: 50%; top: 28px;
+        font-size: 30px;
+        transform: rotate(7deg) translateX(-105%);
+        letter-spacing: 2px;
+    }
+    &__txt1{
+        display: inline-block;
+        transform: skewY(-6deg);
+    }
+    &__txt2{
+        margin-left: 10px;
+        display: inline-block;
+        transform: skewY(-6deg);
+    }
+    &__title{
+        margin-top: 38px;
+        margin-bottom: 30px;
+        font-size: 62px;
+        letter-spacing: 2.8px;
+    }
+    &__txt3{
+        font-size: 1.3em;
+    }
+    &__sub-title{
+        color: #9b8b70;
+        font-size: 18px;
+        line-height: 1.6;
+        opacity: 0;
+
+        @include tj.animate(1s 0.6s 1 forwards){
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__hearts{
+        position: absolute;
+        top: 18px; right: 24%;
+        transform: rotate(18deg);
+    }
+    &__heart{
+        position: absolute;
+        &--1, &--3{ left: -20px; }
+        &--2, &--4{ left: 8px; }
+        &--1, &--2{
+            background-image: url('./assets/heart1.png');
+            @include tj.size(44px, 34px);
+        }
+        &--3, &--4{
+            background-image: url('./assets/heart2.png');
+            @include tj.size(23px, 20px);
+        }
+        &--1, &--4 {
+            @include tj.animate(1.1s infinite){
+                0%{
+                    opacity: 0;
+                    transform: translateY(6px) rotate(30deg);
+                }
+                50%{
+                    opacity: 1;
+                }
+                100%{
+                    opacity: 0;
+                    transform: translateY(-20px) rotate(-10deg);
+                }
+            }
+        }
+        &--2, &--3 {
+            @include tj.animate(1.5s infinite){
+                0%{
+                    opacity: 0;
+                    transform: scale(0.8) translateY(0) rotate(-30deg);
+                }
+                50%{
+                    opacity: 1;
+                }
+                100%{
+                    opacity: 0;
+                    transform: scale(1.1) translateY(-50px) rotate(30deg);
+                }
+            }
+        }
+        &--1 { animation-delay: 0.6s; }
+        &--4 { animation-delay: 1s; }
+    }
+}
+
