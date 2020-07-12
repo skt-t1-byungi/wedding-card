@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build --base=./",
+        "build": "vite build --base=/wedding-card/",
         "deploy": "npm run build && gh-pages -d dist -t true"
     },
     "devDependencies": {
