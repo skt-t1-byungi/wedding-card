@@ -2,7 +2,9 @@ import clsx from 'clsx'
 import { render } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
+import facebookImg from './assets/facebook.svg'
 import frameImg from './assets/frame.svg'
+import kakaoImg from './assets/kakaotalk.svg'
 import photo02Img from './assets/photo02.jpg'
 import photo03Img from './assets/photo03.jpg'
 import photo04Img from './assets/photo04.jpg'
@@ -24,6 +26,7 @@ function App () {
             <Sec02 />
             <Sec03 />
             <Sec04 />
+            {/* <Sec05 /> */}
         </div>)
 }
 
@@ -158,4 +161,12 @@ function DescItem ({ title, children, className }) {
             <dd className='di__dd'>{children}</dd>
         </div>
     )
+}
+
+function Sec05 () {
+    return (
+        <section>
+            <img src={kakaoImg} alt='' />
+            <a />
+        </section>)
 }

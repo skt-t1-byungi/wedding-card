@@ -41,8 +41,6 @@ ul { list-style-type: disc; }
     background: url('./assets/photo01.jpg') 60%;
     background-size: cover;
     height: calc(100vh - #{$foot-h});
-
-    // 임시
     margin-bottom: $foot-h;
 
     &__foot{
@@ -235,6 +233,7 @@ ul { list-style-type: disc; }
     &__bird{
         position: absolute;
         height: 0;
+
         &::before{
             content: '';
             display: block;
