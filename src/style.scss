@@ -16,6 +16,12 @@
 $color-bg: #f3eada;
 $color-pr: #34412e;
 
+@mixin animate($anime-opts) {
+    $name: ANIMATE__#{unique_id()};
+    animation: $name $anime-opts;
+    @keyframes #{$name} {@content}
+}
+
 :root{
     background: $color-bg;
     font-family: 'Nanum Myeongjo', serif;
@@ -92,7 +98,7 @@ ul { list-style-type: disc; }
         line-height: 1.6;
         opacity: 0;
 
-        @include tj.animate(1s 0.6s 1 forwards){
+        @include animate(1s 0.6s 1 forwards){
             from{
                 opacity: 0;
                 transform: translateY(10px);
@@ -121,7 +127,7 @@ ul { list-style-type: disc; }
             @include tj.size(23px, 20px);
         }
         &--1, &--4{
-            @include tj.animate(1.1s infinite){
+            @include animate(1.1s infinite){
                 0%{
                     opacity: 0;
                     transform: translateY(6px) rotate(30deg);
@@ -136,7 +142,7 @@ ul { list-style-type: disc; }
             }
         }
         &--2, &--3{
-            @include tj.animate(1.5s infinite){
+            @include animate(1.5s infinite){
                 0%{
                     opacity: 0;
                     transform: scale(0.8) translateY(0) rotate(-30deg);
@@ -219,7 +225,7 @@ ul { list-style-type: disc; }
         left: 0; top: 30%;
         transform: rotate(20deg);
 
-        @include tj.animate(5s infinite linear){
+        @include animate(5s infinite linear){
             10%,70%{
                 opacity: 1;
             }
@@ -240,7 +246,7 @@ ul { list-style-type: disc; }
             background: url('./assets/bird.png');
             width: 100%;
             padding-top: 100%;
-            @include tj.animate(0.5s infinite steps(5)){
+            @include animate(0.5s infinite steps(5)){
                 to{background-position: 125%;}
             }
         }
@@ -260,7 +266,7 @@ ul { list-style-type: disc; }
                 @if $i%2 == 0{ --x: #{$i*20px}; }
                 @if $i%3 == 0{ --y: #{-$i*5px}; }
 
-                @include tj.animate(5s infinite){
+                @include animate(5s infinite){
                     from{left:0; top: 0}
                     to{
                         left: $i*-10px;
