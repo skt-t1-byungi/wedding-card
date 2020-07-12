@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build --base=./",
-        "deploy": "npm run build && gh-pages -d dist"
+        "deploy": "npm run build && gh-pages -d dist -t true"
     },
     "devDependencies": {
         "@prefresh/vite": "^0.9.1",
