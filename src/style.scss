@@ -237,7 +237,7 @@ ul { list-style-type: disc; }
         &::before{
             content: '';
             display: block;
-            background: url('assets/bird.png');
+            background: url('./assets/bird.png');
             width: 100%;
             padding-top: 100%;
             @include tj.animate(0.5s infinite steps(5)){
