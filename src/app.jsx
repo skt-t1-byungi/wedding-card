@@ -1,4 +1,6 @@
+import clsx from 'clsx'
 import { render } from 'preact'
+import { useEffect, useRef } from 'preact/hooks'
 
 import frameImg from './assets/frame.svg'
 
@@ -9,6 +11,7 @@ function App () {
         <div className='app'>
             <Sec01 />
             <Sec02 />
+            <Sec03 />
         </div>)
 }
 
@@ -16,15 +19,15 @@ function Sec01 () {
     return (
         <section className='s1'>
             <div className='s1__foot'>
-                <p className='s1__names'>
+                <p className='s1__names title'>
                     <span className='s1__txt1'>장지현,</span>
                     <span className='s1__txt2'>정미영</span>
                 </p>
-                <h1 className='s1__title'>
+                <h1 className='s1__title title'>
                     <span className='s1__txt3'>우</span>리 결혼해요
                 </h1>
                 <p className='s1__sub-title'>
-                    8월 15일 토요일 오후 3시<br /> 서울 스탠포트 호텔 2층, 그랜드 볼룸
+                    8월 15일 토요일 오후 3시<br /> 스탠포트 호텔 서울 2층, 그랜드 볼룸
                 </p>
                 <div className='s1__hearts'>
                     <div className='s1__heart s1__heart--1' />
@@ -71,5 +74,59 @@ function Sec02 () {
                 <div className='s2__bird s2__bird--5' />
             </div>
         </section>
+    )
+}
+
+function Sec03 () {
+    /** @type {import('preact/hooks').Ref<HTMLDivElement>} */
+    const mapRef = useRef()
+    const timestamp = '1594574090615'
+    useEffect(() => {
+        window.test = mapRef.current
+        new window.daum.roughmap.Lander({
+            timestamp,
+            key: '2z88g',
+            mapWidth: mapRef.current.clientWidth
+        }).render()
+    }, [])
+
+    return (
+        <section className='s3'>
+            <h2 className='s3__title title'>오시는 길</h2>
+            <address className='s3__addr font-stylish'>마포구 월드컵북로 58길 15</address>
+            <div id={`daumRoughmapContainer${timestamp}`} className='root_daum_roughmap s3__map' ref={mapRef} />
+            <dl className='s3__guides'>
+                <DescItem title='지하철' className='s3__guide'>
+                    <ol>
+                        <li>공항철도, 경의선, 6호선 디지털미디어시티역 하차</li>
+                        <li>2. 도보로 10분, 2번 출구 앞 버스정류장 버스 이용 5분, 택시 이용 5분</li>
+                    </ol>
+                </DescItem>
+                <DescItem title='버스' className='s3__guide'>
+                    <ul>
+                        <li>파랑(간선버스) - 710, 171, 271, 470, 771, 670, 270, 470, 750A</li>
+                        <li>초록(지선버스) - 7737, 6715, 7013A, 7019, 7711, 7715, 7730, 7013B, 7011</li>
+                        <li>빨강(광역버스) - 9711</li>
+                        <li>마을 버스 - 마포 18번(스탠포드호텔 정류장)</li>
+                    </ul>
+                </DescItem>
+                <DescItem title='셔틀버스 이용시' className='s3__guide'>
+                    6호선 디지털미디어시티(DMC)역 2번출구 30M전방 <br />
+                    (행사시간 1시간 전 부터 10분간격 운행)
+                </DescItem>
+                <DescItem title='주차' className='s3__guide'>
+                    예식 하객 무료주차 3시간, 3시간 이후 10분당 1000원
+                </DescItem>
+            </dl>
+        </section>
+    )
+}
+
+function DescItem ({ title, children, className }) {
+    return (
+        <div className={clsx('di', className)}>
+            <dt className='di__dt'>{title}</dt>
+            <dd className='di__dd'>{children}</dd>
+        </div>
     )
 }

@@ -9,19 +9,29 @@
     font-weight: normal;
     font-style: normal;
 }
+.font-stylish{
+    font-family: fromdamiM, sans-serif;
+}
 
 $color-bg: #f3eada;
+$color-pr: #34412e;
 
 :root{
     background: $color-bg;
     font-family: 'Nanum Myeongjo', serif;
 }
+ol, ul{ padding-left: 1em; }
+ul { list-style-type: disc; }
 
 .app{
     margin: 0 auto;
     width: 100%;
     max-width: 550px;
     text-align: center;
+}
+.title{
+    color: $color-pr;
+    @extend .font-stylish;
 }
 
 .s1{
@@ -53,10 +63,6 @@ $color-bg: #f3eada;
         }
     }
 
-    &__names, &__title{
-        color: #34412e;
-        font-family: fromdamiM, sans-serif;
-    }
     &__names{
         position: absolute;
         left: 50%; top: 28px;
@@ -214,7 +220,6 @@ $color-bg: #f3eada;
         opacity: 0;
         left: 0; top: 30%;
         transform: rotate(20deg);
-        // will-change: contents;
 
         @include tj.animate(5s infinite linear){
             10%,70%{
@@ -225,7 +230,6 @@ $color-bg: #f3eada;
                 left: 80%; top:0;
                 transform: rotate(-5deg);
             }
-            90%,100%{ }
         }
     }
     &__bird{
@@ -241,9 +245,9 @@ $color-bg: #f3eada;
                 to{background-position: 125%;}
             }
         }
-        @for $i from 1 through 5 {
+        @for $i from 1 through 5{
             &--#{$i}{
-                $w: math.log($i+1, 2) * 24px;
+                $w: math.log($i+1, 2) * 26px;
                 width: $w;
                 &::before{
                     background-size: $w/128*640;
@@ -253,19 +257,55 @@ $color-bg: #f3eada;
                 --deg: #{math.random()*-40deg};
                 --x: #{$i*6px};
                 --y: #{$i*4px};
-
                 transform: rotate(var(--deg)) translate(var(--x), var(--y));
-                @if $i%2 == 0 { --x: #{$i*20px}; }
-                @if $i%3 == 0 { --y: #{-$i*5px}; }
+                @if $i%2 == 0{ --x: #{$i*20px}; }
+                @if $i%3 == 0{ --y: #{-$i*5px}; }
 
                 @include tj.animate(5s infinite){
                     from{left:0; top: 0}
                     to{
                         left: $i*-10px;
-                        top: $i*16px;
+                        top: $i*18px;
                     }
                 }
             }
         }
     }
+}
+
+.s3{
+    padding: 30px;
+    padding-top: 100px;
+
+    &__title{
+        color: $color-pr;
+        font-size: 48px;
+        margin-bottom: 6px;
+    }
+    &__addr{
+        color: #9b8b70;
+        font-style: normal;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    &__map{
+        margin-bottom: 30px!important;
+    }
+    &__guides{
+        text-align: left;
+    }
+    &__guide{
+        &:not(:last-child){
+            margin-bottom: 12px;
+        }
+    }
+}
+
+.di{
+    font-size: 13px;
+    color: #655b4a;
+    line-height: 1.4;
+
+    &__dt{ font-size: 1.2em; margin-left: -6px; }
+    &__dd{ padding-left: 6px; }
 }
