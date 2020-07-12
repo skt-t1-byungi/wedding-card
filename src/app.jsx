@@ -17,6 +17,8 @@ import photo10Img from './assets/photo10.jpg'
 import photo11Img from './assets/photo11.jpg'
 import photo12Img from './assets/photo12.jpg'
 
+import './style.scss'
+
 render(<App />, document.getElementById('app'))
 
 function App () {
