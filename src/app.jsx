@@ -1,5 +1,7 @@
 import { render } from 'preact'
 
+import frameImg from './assets/frame.svg'
+
 render(<App />, document.getElementById('app'))
 
 function App () {
@@ -37,6 +39,30 @@ function Sec01 () {
 
 function Sec02 () {
     return (
-        <section>{null}</section>
+        <section className='s2'>
+            <img src={frameImg} className='s2__fr s2__fr--lt' alt='frame' />
+            <img src={frameImg} className='s2__fr s2__fr--rt' alt='frame' />
+            <img src={frameImg} className='s2__fr s2__fr--lb' alt='frame' />
+            <img src={frameImg} className='s2__fr s2__fr--rb' alt='frame' />
+            <div className='s2__letter'>
+                {`오랜 기다린 속에서
+                저희 두사람, 한 마음되어
+                참된 사랑의 결실을 맺게 되었습니다.
+                오셔서 축복해주시면
+                큰 기쁨이 되겠습니다.`}
+            </div>
+            <div className='s2__sign s2__sign--1'>
+                <span>장한성</span>
+                <span>김혜성</span>
+                <span>의 차남</span>
+                <span>장지현</span>
+            </div>
+            <div className='s2__sign'>
+                <span>정연근</span>
+                <span>장정순</span>
+                <span>의 차녀</span>
+                <span>정미영</span>
+            </div>
+        </section>
     )
 }
