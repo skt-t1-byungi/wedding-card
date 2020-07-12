@@ -3,6 +3,17 @@ import { render } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
 import frameImg from './assets/frame.svg'
+import photo02Img from './assets/photo02.jpg'
+import photo03Img from './assets/photo03.jpg'
+import photo04Img from './assets/photo04.jpg'
+import photo05Img from './assets/photo05.jpg'
+import photo06Img from './assets/photo06.jpg'
+import photo07Img from './assets/photo07.jpg'
+import photo08Img from './assets/photo08.jpg'
+import photo09Img from './assets/photo09.jpg'
+import photo10Img from './assets/photo10.jpg'
+import photo11Img from './assets/photo11.jpg'
+import photo12Img from './assets/photo12.jpg'
 
 render(<App />, document.getElementById('app'))
 
@@ -12,6 +23,7 @@ function App () {
             <Sec01 />
             <Sec02 />
             <Sec03 />
+            <Sec04 />
         </div>)
 }
 
@@ -78,11 +90,28 @@ function Sec02 () {
 }
 
 function Sec03 () {
+    return (
+        <section className='s3'>
+            <img src={photo02Img} alt='photo' />
+            <img src={photo03Img} alt='photo' />
+            <img src={photo04Img} alt='photo' />
+            <img src={photo05Img} alt='photo' />
+            <img src={photo06Img} alt='photo' />
+            <img src={photo07Img} alt='photo' />
+            <img src={photo08Img} alt='photo' />
+            <img src={photo09Img} alt='photo' />
+            <img src={photo10Img} alt='photo' />
+            <img src={photo11Img} alt='photo' />
+            <img src={photo12Img} alt='photo' />
+        </section>
+    )
+}
+
+function Sec04 () {
     /** @type {import('preact/hooks').Ref<HTMLDivElement>} */
     const mapRef = useRef()
     const timestamp = '1594574090615'
     useEffect(() => {
-        window.test = mapRef.current
         new window.daum.roughmap.Lander({
             timestamp,
             key: '2z88g',
@@ -91,18 +120,18 @@ function Sec03 () {
     }, [])
 
     return (
-        <section className='s3'>
-            <h2 className='s3__title title'>오시는 길</h2>
-            <address className='s3__addr font-stylish'>마포구 월드컵북로 58길 15</address>
-            <div id={`daumRoughmapContainer${timestamp}`} className='root_daum_roughmap s3__map' ref={mapRef} />
-            <dl className='s3__guides'>
-                <DescItem title='지하철' className='s3__guide'>
+        <section className='s4'>
+            <h2 className='s4__title title'>오시는 길</h2>
+            <address className='s4__addr font-stylish'>마포구 월드컵북로 58길 15</address>
+            <div id={`daumRoughmapContainer${timestamp}`} className='root_daum_roughmap s4__map' ref={mapRef} />
+            <dl className='s4__guides'>
+                <DescItem title='지하철' className='s4__guide'>
                     <ol>
                         <li>공항철도, 경의선, 6호선 디지털미디어시티역 하차</li>
-                        <li>2. 도보로 10분, 2번 출구 앞 버스정류장 버스 이용 5분, 택시 이용 5분</li>
+                        <li>도보로 10분, 2번 출구 앞 버스정류장 버스 이용 5분, 택시 이용 5분</li>
                     </ol>
                 </DescItem>
-                <DescItem title='버스' className='s3__guide'>
+                <DescItem title='버스' className='s4__guide'>
                     <ul>
                         <li>파랑(간선버스) - 710, 171, 271, 470, 771, 670, 270, 470, 750A</li>
                         <li>초록(지선버스) - 7737, 6715, 7013A, 7019, 7711, 7715, 7730, 7013B, 7011</li>
@@ -110,11 +139,11 @@ function Sec03 () {
                         <li>마을 버스 - 마포 18번(스탠포드호텔 정류장)</li>
                     </ul>
                 </DescItem>
-                <DescItem title='셔틀버스 이용시' className='s3__guide'>
+                <DescItem title='셔틀버스 이용시' className='s4__guide'>
                     6호선 디지털미디어시티(DMC)역 2번출구 30M전방 <br />
                     (행사시간 1시간 전 부터 10분간격 운행)
                 </DescItem>
-                <DescItem title='주차' className='s3__guide'>
+                <DescItem title='주차' className='s4__guide'>
                     예식 하객 무료주차 3시간, 3시간 이후 10분당 1000원
                 </DescItem>
             </dl>

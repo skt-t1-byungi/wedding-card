@@ -38,7 +38,7 @@ ul { list-style-type: disc; }
     $foot-h: 340px;
 
     position: relative;
-    background: url('./assets/photo1.jpg') 60%;
+    background: url('./assets/photo01.jpg') 60%;
     background-size: cover;
     height: calc(100vh - #{$foot-h});
 
@@ -274,8 +274,15 @@ ul { list-style-type: disc; }
 }
 
 .s3{
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+
+    &>img:not(:last-child){ margin-bottom: 4px; }
+}
+
+.s4{
     padding: 30px;
-    padding-top: 100px;
 
     &__title{
         color: $color-pr;
@@ -288,17 +295,9 @@ ul { list-style-type: disc; }
         font-size: 20px;
         margin-bottom: 30px;
     }
-    &__map{
-        margin-bottom: 30px!important;
-    }
-    &__guides{
-        text-align: left;
-    }
-    &__guide{
-        &:not(:last-child){
-            margin-bottom: 12px;
-        }
-    }
+    &__map{ margin-bottom: 30px!important; }
+    &__guides{ text-align: left; }
+    &__guide:not(:last-child){ margin-bottom: 12px; }
 }
 
 .di{
