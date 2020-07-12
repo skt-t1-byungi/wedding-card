@@ -63,6 +63,13 @@ function Sec02 () {
                 <span>의 차녀</span>
                 <span>정미영</span>
             </div>
+            <div className='s2__birds'>
+                <div className='s2__bird s2__bird--1' />
+                <div className='s2__bird s2__bird--2' />
+                <div className='s2__bird s2__bird--3' />
+                <div className='s2__bird s2__bird--4' />
+                <div className='s2__bird s2__bird--5' />
+            </div>
         </section>
     )
 }
