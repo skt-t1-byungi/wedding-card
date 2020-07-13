@@ -2,9 +2,7 @@ import clsx from 'clsx'
 import { render } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
-import facebookImg from './assets/facebook.svg'
 import frameImg from './assets/frame.svg'
-import kakaoImg from './assets/kakaotalk.svg'
 import photo02Img from './assets/photo02.jpg'
 import photo03Img from './assets/photo03.jpg'
 import photo04Img from './assets/photo04.jpg'
@@ -28,7 +26,7 @@ function App () {
             <Sec02 />
             <Sec03 />
             <Sec04 />
-            {/* <Sec05 /> */}
+            <Sec05 />
         </div>)
 }
 
@@ -97,17 +95,17 @@ function Sec02 () {
 function Sec03 () {
     return (
         <section className='s3'>
-            <img src={photo02Img} alt='photo' />
-            <img src={photo03Img} alt='photo' />
-            <img src={photo04Img} alt='photo' />
-            <img src={photo05Img} alt='photo' />
-            <img src={photo06Img} alt='photo' />
-            <img src={photo07Img} alt='photo' />
-            <img src={photo08Img} alt='photo' />
-            <img src={photo09Img} alt='photo' />
-            <img src={photo10Img} alt='photo' />
-            <img src={photo11Img} alt='photo' />
-            <img src={photo12Img} alt='photo' />
+            <img className='s3__img' src={photo02Img} alt='photo' />
+            <img className='s3__img' src={photo03Img} alt='photo' />
+            <img className='s3__img' src={photo04Img} alt='photo' />
+            <img className='s3__img' src={photo05Img} alt='photo' />
+            <img className='s3__img' src={photo06Img} alt='photo' />
+            <img className='s3__img' src={photo07Img} alt='photo' />
+            <img className='s3__img' src={photo08Img} alt='photo' />
+            <img className='s3__img' src={photo09Img} alt='photo' />
+            <img className='s3__img' src={photo10Img} alt='photo' />
+            <img className='s3__img' src={photo11Img} alt='photo' />
+            <img className='s3__img' src={photo12Img} alt='photo' />
         </section>
     )
 }
@@ -166,9 +164,24 @@ function DescItem ({ title, children, className }) {
 }
 
 function Sec05 () {
+    useEffect(() => { window.Kakao.init('d17095f08c55aa2b0b3c5a2d413ddea5') }, [])
     return (
-        <section>
-            <img src={kakaoImg} alt='' />
-            <a />
+        <section className='s5'>
+            <div className='s5__links'>
+                <div
+                    className='s5__link s5__link--kakao'
+                    onClick={e => {
+                        window.Kakao.Link.sendScrap({ requestUrl: 'https://skt-t1-byungi.github.io/wedding-card' })
+                    }}
+                />
+                <div
+                    className='s5__link s5__link--fb'
+                    onClick={e => {
+                        const url = encodeURIComponent('https://skt-t1-byungi.github.io/wedding-card')
+                        window.open(`http://www.facebook.com/sharer/sharer.php?u=${url}`)
+                    }}
+                />
+            </div>
+            <h2 className='s5__txt'>카카오/페이스북 공유하기</h2>
         </section>)
 }
