@@ -12,7 +12,6 @@ import photo05Img from './assets/photo05.jpg'
 import photo06Img from './assets/photo06.jpg'
 import photo07Img from './assets/photo07.jpg'
 import photo08Img from './assets/photo08.jpg'
-import photo09Img from './assets/photo09.jpg'
 import photo10Img from './assets/photo10.jpg'
 import photo11Img from './assets/photo11.jpg'
 import photo12Img from './assets/photo12.jpg'
@@ -124,12 +123,12 @@ function Sec03 () {
                     startVelocity: 30,
                     spread: 360,
                     origin: {
-                        x: Math.random(),
-                        y: Math.random() - 0.2
+                        x: Math.random() * 0.7 + 0.15,
+                        y: Math.random() * 0.5
                     }
                 })
             }
-        }, { threshold: 0, rootMargin: '-100px' })
+        }, { threshold: 0, rootMargin: '-50%' })
         observer.observe(ref.current)
         return () => observer.disconnect()
     }, [])
@@ -142,7 +141,6 @@ function Sec03 () {
             <img className='s3__img' src={photo06Img} alt='photo' />
             <img className='s3__img' src={photo07Img} alt='photo' />
             <img className='s3__img' src={photo08Img} alt='photo' />
-            <img className='s3__img' src={photo09Img} alt='photo' />
             <img className='s3__img' src={photo10Img} alt='photo' />
             <img className='s3__img' src={photo11Img} alt='photo' />
             <img className='s3__img' src={photo12Img} alt='photo' />
