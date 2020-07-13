@@ -1,8 +1,10 @@
+import { useInView } from 'react-intersection-observer'
 import clsx from 'clsx'
 import { render } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
 import frameImg from './assets/frame.svg'
+import hrImg from './assets/hr.svg'
 import photo02Img from './assets/photo02.jpg'
 import photo03Img from './assets/photo03.jpg'
 import photo04Img from './assets/photo04.jpg'
@@ -14,6 +16,8 @@ import photo09Img from './assets/photo09.jpg'
 import photo10Img from './assets/photo10.jpg'
 import photo11Img from './assets/photo11.jpg'
 import photo12Img from './assets/photo12.jpg'
+import photo13Img from './assets/photo13.jpg'
+import photo14Img from './assets/photo14.jpg'
 
 import './style.scss'
 
@@ -56,19 +60,21 @@ function Sec01 () {
 }
 
 function Sec02 () {
+    const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true })
     return (
-        <section className='s2'>
+        <section className='s2' ref={ref}>
             <img src={frameImg} className='s2__fr s2__fr--lt' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--rt' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--lb' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--rb' alt='frame' />
-            <div className='s2__letter'>
+            <div className={clsx('s2__letter', { 's2__letter--show': inView })}>
                 {`오랜 기다린 속에서
                 저희 두사람, 한 마음되어
                 참된 사랑의 결실을 맺게 되었습니다.
                 오셔서 축복해주시면
                 큰 기쁨이 되겠습니다.`}
             </div>
+            <img src={hrImg} className='s2__hr' />
             <div className='s2__sign s2__sign--1'>
                 <span>장한성</span>
                 <span>김혜성</span>
@@ -106,6 +112,8 @@ function Sec03 () {
             <img className='s3__img' src={photo10Img} alt='photo' />
             <img className='s3__img' src={photo11Img} alt='photo' />
             <img className='s3__img' src={photo12Img} alt='photo' />
+            <img className='s3__img' src={photo13Img} alt='photo' />
+            <img className='s3__img' src={photo14Img} alt='photo' />
         </section>
     )
 }

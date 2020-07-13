@@ -93,7 +93,7 @@ ul { list-style-type: disc; }
         line-height: 1.6;
         opacity: 0;
 
-        @include tj.animate(1s 0.6s 1 forwards){
+        @include tj.animate(1s 0.8s 1 forwards){
             from{
                 opacity: 0;
                 transform: translateY(10px);
@@ -184,12 +184,21 @@ ul { list-style-type: disc; }
         line-height: 1.8;
         white-space: pre-line;
         word-break: keep-all;
-        background: url('./assets/hr.svg') no-repeat bottom;
-        background-size: 80%;
+        opacity: 0;
+        transform: translateY(18px);
 
-        $gap: 12%;
-        padding-bottom: calc(#{$gap} + (min(100vw, 600px)*0.65*0.8*#{29/254}));
-        margin-bottom: $gap;
+        &--show{
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            transition-delay: 0.4s;
+        }
+    }
+
+    &__hr{
+        width: 60%;
+        margin: 0 auto;
+        padding: 12% 0;
     }
 
     &__sign{
@@ -247,7 +256,7 @@ ul { list-style-type: disc; }
         }
         @for $i from 1 through 5{
             &--#{$i}{
-                $w: math.log($i+1, 2) * 26px;
+                $w: math.log($i+1, 2) * 32px;
                 width: $w;
                 &::before{
                     background-size: $w/128*640;
@@ -323,7 +332,7 @@ ul { list-style-type: disc; }
     &__link{
         @include tj.size(50px);
         cursor: pointer;
-        &:not(:last-child){ margin-right: 50px; }
+        &:not(:last-child){ margin-right: 25px; }
 
         &--kakao{ background-image: url('./assets/kakaotalk.svg'); }
         &--fb{ background-image: url('./assets/facebook.svg'); }

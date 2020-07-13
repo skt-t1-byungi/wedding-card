@@ -16,6 +16,7 @@
     "dependencies": {
         "clsx": "^1.1.1",
         "preact": "^10.4.4",
+        "react-intersection-observer": "^8.26.2",
         "thejungle": "^1.0.5"
     },
     "eslintIgnore": [
