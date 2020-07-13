@@ -24,7 +24,7 @@ $color-em: #635e55;
 ol, ul{ padding-left: 1em; }
 ul { list-style-type: disc; }
 
-.app{
+#app{
     margin: 0 auto;
     width: 100%;
     max-width: 550px;
@@ -39,10 +39,10 @@ ul { list-style-type: disc; }
     $foot-h: 340px;
 
     position: relative;
-    background: url('./assets/photo01.jpg') 60%;
+    background: url('./assets/photo01.jpg') 60% center;
     background-size: cover;
     height: calc(100vh - #{$foot-h});
-    margin-bottom: $foot-h;
+    margin-bottom: $foot-h + 100px;
 
     &__foot{
         position: absolute;
@@ -191,7 +191,7 @@ ul { list-style-type: disc; }
             opacity: 1;
             transform: translateY(0);
             transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-            transition-delay: 0.4s;
+            transition-delay: 0.2s;
         }
     }
 

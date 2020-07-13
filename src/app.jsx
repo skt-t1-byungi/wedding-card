@@ -1,7 +1,7 @@
-import { useInView } from 'react-intersection-observer'
+import confetti from 'canvas-confetti'
 import clsx from 'clsx'
 import { render } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
+import { useEffect, useReducer, useRef } from 'preact/hooks'
 
 import frameImg from './assets/frame.svg'
 import hrImg from './assets/hr.svg'
@@ -25,13 +25,13 @@ render(<App />, document.getElementById('app'))
 
 function App () {
     return (
-        <div className='app'>
+        <>
             <Sec01 />
             <Sec02 />
             <Sec03 />
             <Sec04 />
             <Sec05 />
-        </div>)
+        </>)
 }
 
 function Sec01 () {
@@ -60,14 +60,28 @@ function Sec01 () {
 }
 
 function Sec02 () {
-    const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true })
+    const [isLetterShown, showLetter] = useReducer(() => true, false)
+    const ref = useRef()
+    useEffect(() => {
+        const observer = new IntersectionObserver(entries => {
+            const entry = entries.find(e => e.target === ref.current)
+            if (!entry) observer.disconnect()
+            if (entry.isIntersecting) {
+                showLetter()
+                observer.disconnect()
+            }
+        }, { threshold: 0.5 })
+        observer.observe(ref.current)
+        return () => observer.disconnect()
+    }, [])
+
     return (
         <section className='s2' ref={ref}>
             <img src={frameImg} className='s2__fr s2__fr--lt' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--rt' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--lb' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--rb' alt='frame' />
-            <div className={clsx('s2__letter', { 's2__letter--show': inView })}>
+            <div className={clsx('s2__letter', { 's2__letter--show': isLetterShown })}>
                 {`오랜 기다린 속에서
                 저희 두사람, 한 마음되어
                 참된 사랑의 결실을 맺게 되었습니다.
@@ -99,8 +113,28 @@ function Sec02 () {
 }
 
 function Sec03 () {
+    const ref = useRef()
+    useEffect(() => {
+        const observer = new IntersectionObserver(entries => {
+            const entry = entries.find(e => e.target === ref.current)
+            if (!entry) observer.disconnect()
+            if (entry.isIntersecting) {
+                confetti({
+                    particleCount: 100,
+                    startVelocity: 30,
+                    spread: 360,
+                    origin: {
+                        x: Math.random(),
+                        y: Math.random() - 0.2
+                    }
+                })
+            }
+        }, { threshold: 0, rootMargin: '-100px' })
+        observer.observe(ref.current)
+        return () => observer.disconnect()
+    }, [])
     return (
-        <section className='s3'>
+        <section className='s3' ref={ref}>
             <img className='s3__img' src={photo02Img} alt='photo' />
             <img className='s3__img' src={photo03Img} alt='photo' />
             <img className='s3__img' src={photo04Img} alt='photo' />
@@ -172,7 +206,9 @@ function DescItem ({ title, children, className }) {
 }
 
 function Sec05 () {
-    useEffect(() => { window.Kakao.init('d17095f08c55aa2b0b3c5a2d413ddea5') }, [])
+    useEffect(() => {
+        window.Kakao.init('d17095f08c55aa2b0b3c5a2d413ddea5')
+    }, [])
     return (
         <section className='s5'>
             <div className='s5__links'>
