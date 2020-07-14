@@ -81,7 +81,7 @@ function Sec02 () {
             <img src={frameImg} className='s2__fr s2__fr--lb' alt='frame' />
             <img src={frameImg} className='s2__fr s2__fr--rb' alt='frame' />
             <div className={clsx('s2__letter', { 's2__letter--show': isLetterShown })}>
-                {`오랜 기다린 속에서
+                {`오랜 기다림 속에서
                 저희 두사람, 한 마음되어
                 참된 사랑의 결실을 맺게 되었습니다.
                 오셔서 축복해주시면
