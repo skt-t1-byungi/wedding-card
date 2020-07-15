@@ -112,11 +112,10 @@ function Sec02 () {
 }
 
 function Sec03 () {
-    const ref = useRef()
+    const img1Ref = useRef()
+    const img2Ref = useRef()
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            const entry = entries.find(e => e.target === ref.current)
-            if (!entry) observer.disconnect()
+        const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 confetti({
                     particleCount: 100,
@@ -129,19 +128,20 @@ function Sec03 () {
                 })
             }
         }, { threshold: 0, rootMargin: '-50%' })
-        observer.observe(ref.current)
+        observer.observe(img1Ref.current)
+        observer.observe(img2Ref.current)
         return () => observer.disconnect()
     }, [])
     return (
-        <section className='s3' ref={ref}>
-            <img className='s3__img' src={photo02Img} alt='photo' />
+        <section className='s3'>
+            <img className='s3__img' src={photo02Img} ref={img1Ref} alt='photo' />
             <img className='s3__img' src={photo03Img} alt='photo' />
             <img className='s3__img' src={photo04Img} alt='photo' />
             <img className='s3__img' src={photo05Img} alt='photo' />
             <img className='s3__img' src={photo06Img} alt='photo' />
             <img className='s3__img' src={photo07Img} alt='photo' />
             <img className='s3__img' src={photo08Img} alt='photo' />
-            <img className='s3__img' src={photo10Img} alt='photo' />
+            <img className='s3__img' src={photo10Img} ref={img2Ref} alt='photo' />
             <img className='s3__img' src={photo11Img} alt='photo' />
             <img className='s3__img' src={photo12Img} alt='photo' />
             <img className='s3__img' src={photo13Img} alt='photo' />
