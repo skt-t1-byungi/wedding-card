@@ -89,7 +89,7 @@ function Sec02 () {
             </div>
             <img src={hrImg} className='s2__hr' />
             <div className='s2__sign s2__sign--1'>
-                <span>장한성</span>
+                <span>장한섭</span>
                 <span>김혜성</span>
                 <span>의 차남</span>
                 <span>장지현</span>
@@ -112,7 +112,7 @@ function Sec02 () {
 }
 
 function Sec03 () {
-    const img1Ref = useRef()
+    const containerRef = useRef()
     const img2Ref = useRef()
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
@@ -128,13 +128,13 @@ function Sec03 () {
                 })
             }
         }, { threshold: 0, rootMargin: '-50%' })
-        observer.observe(img1Ref.current)
+        observer.observe(containerRef.current)
         observer.observe(img2Ref.current)
         return () => observer.disconnect()
     }, [])
     return (
-        <section className='s3'>
-            <img className='s3__img' src={photo02Img} ref={img1Ref} alt='photo' />
+        <section className='s3' ref={containerRef}>
+            <img className='s3__img' src={photo02Img} alt='photo' />
             <img className='s3__img' src={photo03Img} alt='photo' />
             <img className='s3__img' src={photo04Img} alt='photo' />
             <img className='s3__img' src={photo05Img} alt='photo' />
