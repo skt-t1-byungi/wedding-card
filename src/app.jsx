@@ -62,9 +62,7 @@ function Sec02 () {
     const [isLetterShown, showLetter] = useReducer(() => true, false)
     const ref = useRef()
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            const entry = entries.find(e => e.target === ref.current)
-            if (!entry) observer.disconnect()
+        const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 showLetter()
                 observer.disconnect()
