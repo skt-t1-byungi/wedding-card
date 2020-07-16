@@ -113,7 +113,7 @@ function Sec02 () {
 
 function Sec03 () {
     const containerRef = useRef()
-    const img2Ref = useRef()
+    const imgRef = useRef()
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
@@ -129,7 +129,7 @@ function Sec03 () {
             }
         }, { threshold: 0, rootMargin: '-50%' })
         observer.observe(containerRef.current)
-        observer.observe(img2Ref.current)
+        observer.observe(imgRef.current)
         return () => observer.disconnect()
     }, [])
     return (
@@ -141,7 +141,7 @@ function Sec03 () {
             <img className='s3__img' src={photo06Img} alt='photo' />
             <img className='s3__img' src={photo07Img} alt='photo' />
             <img className='s3__img' src={photo08Img} alt='photo' />
-            <img className='s3__img' src={photo10Img} ref={img2Ref} alt='photo' />
+            <img className='s3__img' src={photo10Img} ref={imgRef} alt='photo' />
             <img className='s3__img' src={photo11Img} alt='photo' />
             <img className='s3__img' src={photo12Img} alt='photo' />
             <img className='s3__img' src={photo13Img} alt='photo' />
