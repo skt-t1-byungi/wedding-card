@@ -85,7 +85,7 @@ function Sec02 () {
                 오셔서 축복해주시면
                 큰 기쁨이 되겠습니다.`}
             </div>
-            <img src={hrImg} className='s2__hr' />
+            <img src={hrImg} className='s2__hr' alt='line' />
             <div className='s2__sign s2__sign--1'>
                 <span>장한섭</span>
                 <span>김혜성</span>
